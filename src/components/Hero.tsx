@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <div>
       <div className="relative mt-4 overflow-clip bg-gradient-to-b from-[#000000] to-[#040f4a] w-full">
-        <div className="absolute rounded-[55%] bg-gradient-to-b from-[#000000] to-[#151519] w-[3000px] top-[500px] left-[50%] h-[1300px] -translate-x-1/2"></div>
+        <div className="absolute rounded-[55%] bg-gradient-to-b from-[#000000] to-[#040f4a] w-[3000px] top-[500px] left-[50%] h-[1300px] -translate-x-1/2"></div>
         <div className="relative">
           <div className="text-4xl  md:text-8xl font-bold text-center">
             <motion.h1

@@ -1,13 +1,17 @@
 import About from "@/components/About";
+import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import ProjectCard from "@/components/ProjectCard";
+import SkillsCard from "@/components/SkillsCard";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-[#000000] to-[#09041c]">
+    <div className="">
       <Hero></Hero>
       <About></About>
       <ProjectCard></ProjectCard>
+      <SkillsCard></SkillsCard>
+      <Contact></Contact>
     </div>
   );
 }
