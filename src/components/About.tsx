@@ -21,7 +21,8 @@ const About = () => {
             <div className="flex flex-col mt-3">
               <h1 className="text-2xl text-white font-bold">Education</h1>
               <h1 className="text-lg text-white/70 mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                BBA honours department of Marketing Bogura azizul haque college.
+                HSC Ahmed uddin shah shishu niketan school and collage.
               </h1>
             </div>
           </div>
@@ -35,7 +36,10 @@ const About = () => {
             <div className="flex flex-col mt-3">
               <h1 className="text-2xl text-white font-bold">Problem Solving</h1>
               <h1 className="text-lg text-white/70 mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Problem solving is the ability to identify, analyze, and resolve
+                challenges effectively. It involves critical thinking,
+                creativity, and persistence to find solutions, making it a vital
+                skill in both personal and professional life.
               </h1>
             </div>
           </div>
@@ -49,7 +53,10 @@ const About = () => {
             <div className="flex flex-col mt-3">
               <h1 className="text-2xl text-white font-bold">Experience</h1>
               <h1 className="text-lg text-white/70 mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Experienced Full-Stack Web Developer with expertise in React,
+                Next.js, and Node.js. Proven ability to build scalable
+                applications, optimize performance, and collaborate with
+                cross-functional teams to deliver high-quality projects.
               </h1>
             </div>
           </div>
@@ -65,7 +72,9 @@ const About = () => {
                 Technical Skills
               </h1>
               <h1 className="text-lg text-white/70 mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Proficient in React, Next.js, Node.js, Express.js, MongoDB,
+                TypeScript, Tailwind CSS, JavaScript, HTML, and CSS. Experienced
+                in REST APIs, Git, Firebase, GraphQL, and Docker.
               </h1>
             </div>
           </div>

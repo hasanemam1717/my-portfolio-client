@@ -1,7 +1,10 @@
 import BlogCard, { TBlog } from "@/components/BlogCard";
 
 const BlogPage = async () => {
-  const res = await fetch("https://my-portfolio-server-brown.vercel.app/blogs");
+  const res = await fetch(
+    "https://my-portfolio-server-brown.vercel.app/blogs",
+    { method: "GET", cache: "force-cache" }
+  );
   const blogs = await res.json();
   console.log(blogs);
   return (
