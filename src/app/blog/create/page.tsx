@@ -20,7 +20,7 @@ export default function AddBlogPost() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/blogs", {
+    await fetch("https://my-portfolio-server-brown.vercel.app/blogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
