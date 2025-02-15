@@ -28,7 +28,7 @@ const Hero = () => {
             </motion.h1>
           </div>
           <motion.div
-            className="absolute left-1/4 top-1/3"
+            className="absolute hidden md:block left-1/4 top-1/3"
             drag
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -42,7 +42,7 @@ const Hero = () => {
             />
           </motion.div>
           <motion.div
-            className="absolute right-48 top-8"
+            className="absolute hidden md:block right-48 top-8"
             drag
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}

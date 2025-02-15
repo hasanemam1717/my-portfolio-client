@@ -1,183 +1,126 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { CgMenuMotion } from "react-icons/cg";
-import { VscClose } from "react-icons/vsc";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaUser, FaMoon, FaSun } from "react-icons/fa";
-
-const navlinks = [
-  {
-    title: "Blog",
-    path: "/blog",
-  },
-  {
-    title: "Projects",
-    path: "/projects",
-  },
-];
-
-const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark", !isDarkMode);
-  };
-
-  return (
-    <div className="relative z-10">
-      {/* Dropdown Toggle Button */}
-      <button
-        onClick={toggleDropdown}
-        className="flex items-center justify-center w-10 h-10 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
-      >
-        <FaUser className="text-white" />
-      </button>
-
-      {/* Dropdown Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
-          >
-            {/* User Profile Option */}
-            <button
-              onClick={() => {
-                console.log("User Profile Clicked");
-                setIsOpen(false);
-              }}
-              className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
-            >
-              <FaUser className="text-gray-500 dark:text-gray-400" />
-              <span>Profile</span>
-            </button>
-
-            {/* Theme Toggle Option */}
-            <button
-              onClick={() => {
-                toggleTheme();
-                setIsOpen(false);
-              }}
-              className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
-            >
-              {isDarkMode ? (
-                <FaSun className="text-yellow-500" />
-              ) : (
-                <FaMoon className="text-gray-500 dark:text-gray-400" />
-              )}
-              <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
-  const toggleNavbar = () => {
-    setNav(!nav);
-  };
-  const closeNavbar = () => {
-    setNav(false);
-  };
-  const menuVariant = {
-    open: {
-      x: 0,
-      transition: {
-        stiffness: 20,
-        damping: 15,
-      },
-    },
-    closed: {
-      x: "-100%",
-      transition: {
-        stiffness: 20,
-        damping: 15,
-      },
-    },
+  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/blog", label: "Blogs" },
+    { href: "/projects", label: "Projects" },
+    { href: "/contact", label: "Contact" },
+  ];
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <div className="">
-      {/* Desktop Navbar */}
-      <div className="hidden md:flex justify-between items-center mx-5 text-white font-semibold">
-        <ul className="flex p-4 text-xl flex-row space-x-8 items-center">
-          {navlinks.map((navlink, index) => (
-            <li key={index}>
-              <Link href={navlink.path}>{navlink.title}</Link>
-            </li>
-          ))}
-          <li>
-            <Link href={"/contact"}>
-              <h1 className="text-lg cursor-pointer">Contact Me</h1>
-              <div className="relative">
-                <div className="absolute w-2/3 h-1 transition-all ease-out bg-orange-400 rounded-full group-hover:w-full"></div>
-                <div className="absolute mt-1 w-1/3 h-1 transition-all ease-out bg-orange-700 rounded-full group-hover:w-full"></div>
-              </div>
+    <nav className="text-white shadow-md">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center gap-1">
+              <span className="text-xl font-bold text-white">Portfolio</span>
             </Link>
-          </li>
-        </ul>
-        <ul className="flex items-center gap-4">
-          <Link href={"/"}>Hasan</Link>
-          <Dropdown />
-        </ul>
-      </div>
+          </div>
 
-      {/* Mobile Navbar */}
-      <div
-        onClick={toggleNavbar}
-        className="md:hidden absolute top-5 right-2 rounded border-white/70 p-1 z-50 text-white"
-      >
-        {nav ? <VscClose size={30} /> : <CgMenuMotion size={30} />}
-      </div>
-      <motion.div
-        initial={false}
-        animate={nav ? "open" : "closed"}
-        variants={menuVariant}
-        className="fixed left-0 top-0 w-full h-screen z-40 bg-black/80"
-      >
-        <ul className="text-2xl text-center mt-20 flex flex-col space-y-4">
-          {navlinks.map((navlink, index) => (
-            <li key={index}>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-6">
+            {navLinks.map(({ href, label }) => (
               <Link
-                className="text-white"
-                href={navlink.path}
-                onClick={closeNavbar}
+                key={href}
+                href={href}
+                className={`${
+                  pathname === href
+                    ? "text-white font-bold"
+                    : "text-gray-700 hover:text-white transition-colors duration-200"
+                }`}
               >
-                {navlink.title}
+                {label}
               </Link>
-            </li>
-          ))}
-          <li>
-            <Link className="text-white" href="/contact" onClick={closeNavbar}>
-              Contact Me
+            ))}
+          </div>
+
+          <div className="hidden md:block">
+            <Link
+              href="/blog/create"
+              className="px-4 py-2 text-white  rounded-full hover:bg-white/20 transition-colors duration-200"
+            >
+              Post Blog
+            </Link>{" "}
+            <Link
+              href="/resume"
+              className="px-4 py-2 text-white  rounded-full hover:bg-white/20 transition-colors duration-200"
+            >
+              Resume
             </Link>
-          </li>
-          <li>
-            <Link className="text-white" href="/" onClick={closeNavbar}>
-              Hasan
-            </Link>
-          </li>
-          {/* Dropdown in Mobile Menu */}
-          <li className="flex justify-center">
-            <Dropdown />
-          </li>
-        </ul>
-      </motion.div>
-    </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-white focus:outline-none"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="flex flex-col space-y-4 mt-4 pb-4">
+              {navLinks.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`${
+                    pathname === href
+                      ? "text-white font-bold"
+                      : "text-gray-700 hover:text-white transition-colors duration-200"
+                  }`}
+                  onClick={toggleMenu}
+                >
+                  {label}
+                </Link>
+              ))}
+              <Link
+                href="/blog/create"
+                className="px-4 py-2  text-white rounded-full hover:bg-white/20 transition-colors duration-200 "
+                onClick={toggleMenu}
+              >
+                Post Blog
+              </Link>
+              <Link
+                href="/resume"
+                className="px-4 py-2 text-white  rounded-full hover:bg-white/20 transition-colors duration-200"
+              >
+                Resume
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 };
 

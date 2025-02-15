@@ -1,7 +1,7 @@
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectsBar from "@/components/ProjectsBar";
 import SkillsCard from "@/components/SkillsCard";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <div className="">
       <Hero></Hero>
       <About></About>
-      <ProjectCard></ProjectCard>
+      <ProjectsBar></ProjectsBar>
       <SkillsCard></SkillsCard>
       <Contact></Contact>
     </div>

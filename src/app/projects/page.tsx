@@ -1,9 +1,9 @@
-import ProjectsBar from "@/components/ProjectsBar";
+import ProjectCard from "@/components/ProjectCard";
 
 const Projects = () => {
   return (
-    <div className="h-screen">
-      <ProjectsBar></ProjectsBar>
+    <div>
+      <ProjectCard></ProjectCard>
     </div>
   );
 };
