@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import tagImg from "../assets/Adobe Express - file (1).png";
 import htmlImg from "../assets/Adobe Express - file (2).png";
-import dp from "../assets/Adobe Express - file.png";
+import dp from "../assets/365949_copy-removebg-preview.png";
 
 const Hero = () => {
   return (
